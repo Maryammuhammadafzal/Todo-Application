@@ -1,55 +1,106 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
 .container {
-    background-color: #fff;
-    padding: 20px 30px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center;
+    background-color: #ffffff;
+    padding: 20px 10px;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+.header {
+    width: 60%;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    max-width: 60%;
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.heading {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 h1 {
     font-size: 24px;
     margin-bottom: 20px;
-    color: #333;
+    color: #020202;
 }
 
-.input-section {
+.input {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     margin-bottom: 20px;
+    width: 100%;
+    min-height: 70px;
+    padding: 10px 20px;
+    gap: 20px;
 }
 
-#new-task {
-    width: 70%;
+#search-inp {
+    width: 65%;
+    height: 40px;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 16px;
+    box-shadow: -2px -2px 1px rgb(160, 85, 246);
+    border-bottom: 1px solid rgb(160, 85, 246);
+    border-right: 1px solid rgb(160, 85, 246);
 }
 
-#add-task-btn {
-    padding: 10px 15px;
+.search-btn {
+    width: 20%;
+    height: 40px;
+    padding: 5px 20px;
     border: none;
-    background-color: #28a745;
     color: #fff;
+    background-color: #9c4bfe;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;
 }
 
-#add-task-btn:hover {
-    background-color: #218838;
+.search-btn:hover {
+    background-color: #641b98;
+}
+
+.filter {
+    width: 7%;
+    height: 40px;
+    padding: 5px 20px;
+    border: none;
+    background-color: #9c4bfe;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
 ul {
@@ -81,3 +132,74 @@ li .delete-btn {
 li .delete-btn:hover {
     background-color: #c82333;
 }
+
+.footer{
+    display: flex;
+    width: 60%;
+    height: 50px;
+    justify-content: flex-end;
+    padding: 2px 20px;
+}
+
+.popup-task {
+    /* width: 7%;
+    height: 40px; */
+    padding: 5px 12px ;
+    border: none;
+    background-color: #9c4bfe;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 30px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+
+}
+
+.modal-popup{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    position: absolute;
+    background-color: rgb(172, 172, 172);
+
+}
+
+.modal-popup-center{
+    width: 50%;
+    width: 400px;
+    background-color: #9c4bfe;
+
+}
+
+/* @each $breakpoint in map-keys($grid-breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    $postfix: if($infix != "", $infix + "-down", "");
+  
+    @include media-breakpoint-down($breakpoint) {
+      .modal-fullscreen#{$postfix} {
+        width: 100vw;
+        max-width: none;
+        height: 100%;
+        margin: 0;
+  
+        .modal-content {
+          height: 100%;
+          border: 0;
+          @include border-radius(0);
+        }
+  
+        .modal-header,
+        .modal-footer {
+          @include border-radius(0);
+        }
+  
+        .modal-body {
+          overflow-y: auto;
+        }
+      }
+    }
+  } */
