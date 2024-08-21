@@ -1,262 +1,110 @@
+/* Basic Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+/* Variables */
+:root {
+    --bg-color: #fff;
+    --text-color: #333;
+    --primary-color: #6a5acd;
+    --completed-color: #ccc;
+}
+
+/* Dark Theme Variables */
+.dark-theme {
+    --bg-color: #333;
+    --text-color: #fff;
+    --primary-color: #8a2be2;
+    --completed-color: #555;
+}
+
+/* Body */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
     font-family: Arial, sans-serif;
-}
-
-.container {
-    background-color: #ffffff;
-    padding: 20px 10px;
-    width: 100%;
-    min-height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    position: relative;
+    height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.header {
-    width: 60%;
-    height: 150px;
+/* Container */
+.todo-container {
+    background: var(--bg-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: center;
+}
+
+/* Controls */
+.controls {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.main {
-    width: 60%;
-    min-height: 450px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px 20px;
-    margin: 10px 20px;
-    /* justify-content: center;
-    align-items: center; */
-}
-
-.heading {
-    width: 100%;
-    height: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-h1 {
-    font-size: 24px;
+    justify-content: space-between;
     margin-bottom: 20px;
-    color: #020202;
 }
 
-.input {
-    display: flex;
-    /* justify-content: space-between; */
-    margin-bottom: 20px;
-    width: 100%;
-    min-height: 70px;
-    padding: 10px 20px;
-    gap: 20px;
-}
-
-#search-inp {
-    width: 65%;
-    height: 40px;
-    padding: 10px;
-    border: 1px solid #ddd;
+#search {
+    flex: 1;
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid var(--primary-color);
     border-radius: 4px;
-    font-size: 16px;
-    box-shadow: -2px -2px 1px rgb(160, 85, 246);
-    border-bottom: 1px solid rgb(160, 85, 246);
-    border-right: 1px solid rgb(160, 85, 246);
 }
 
-.search-btn {
-    width: 20%;
-    height: 40px;
-    padding: 5px 20px;
-    border: none;
+#filter, #theme-toggle {
+    padding: 8px;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    background: var(--primary-color);
     color: #fff;
-    background-color: #9c4bfe;
-    border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
 }
 
-.search-btn:hover {
-    background-color: #641b98;
-}
-
-.filter {
-    width: 7%;
-    height: 40px;
-    padding: 5px 20px;
-    border: none;
-    background-color: #9c4bfe;
-    color: #fff;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
+/* Task List */
+#todo-list {
+    list-style: none;
     margin: 0;
+    padding: 0;
+    text-align: left;
 }
 
-li {
-
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 4px;
+#todo-list li {
     display: flex;
-    
     align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--completed-color);
 }
 
-li .check-box {
-    background-color: #dc3545;
+#todo-list li label {
+    margin-left: 10px;
+}
+
+#todo-list li .completed {
+    text-decoration: line-through;
+    color: var(--completed-color);
+}
+
+/* Floating Action Button */
+.fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--primary-color);
     color: #fff;
-    border: none;
-    padding: 12px 12px;
-    border-radius: 4px;
-    float: left;
-    transition: background-color 0.3s ease;
-}
-
-li .delete-btn:hover {
-    background-color: #c82333;
-}
-
-.footer{
+    font-size: 24px;
     display: flex;
-    width: 60%;
-    height: 50px;
-    justify-content: flex-end;
-    padding: 2px 20px;
-}
-
-.popup-task {
-    /* width: 7%;
-    height: 40px; */
-    padding: 5px 12px ;
+    justify-content: center;
+    align-items: center;
     border: none;
-    background-color: #9c4bfe;
-    color: #fff;
-    border-radius: 4px;
     cursor: pointer;
-    font-size: 30px;
-    text-align: center;
-    transition: background-color 0.3s ease;
-
 }
-
-.modal{
-    width: 100%;
-    height: 90vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 50px;
-    right: 50px;
-    /* background-image: rgba(117, 117, 117, 0.179);
-    background-color:transparent;
-    backface-visibility: hidden; */
-
-}
-
-.modal-popup-center{
-    width: 30%;
-    height: 250px;
-    background-color: #ffffff;
-    box-shadow: 3px 3px 15px grey;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-popup-center h1{
-    width: 100%;
-    height: 50px;
-    font-size: 20px;
-    text-align: center;
-    padding: 10px 10px;
-}
-
-.modal-popup-center .task-input{
-    width: 100%;
-    height: 70px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
-.task-input input{
-    width: 65%;
-    height: 40px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-    box-shadow: -2px -2px 1px rgb(160, 85, 246);
-    border-bottom: 1px solid rgb(160, 85, 246);
-    border-right: 1px solid rgb(160, 85, 246);
-}
-
-.task-input button{
-    width: 20%;
-    height: 40px;
-    padding: 5px 20px;
-    border: none;
-    color: #fff;
-    background-color: #9c4bfe;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-}
-
-.add:hover {
-    background-color: #641b98;
-}
-
-/* @each $breakpoint in map-keys($grid-breakpoints) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-    $postfix: if($infix != "", $infix + "-down", "");
-  
-    @include media-breakpoint-down($breakpoint) {
-      .modal-fullscreen#{$postfix} {
-        width: 100vw;
-        max-width: none;
-        height: 100%;
-        margin: 0;
-  
-        .modal-content {
-          height: 100%;
-          border: 0;
-          @include border-radius(0);
-        }
-  
-        .modal-header,
-        .modal-footer {
-          @include border-radius(0);
-        }
-  
-        .modal-body {
-          overflow-y: auto;
-        }
-      }
-    }
-  } */

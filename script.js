@@ -1,74 +1,64 @@
-// document.getElementById('add-task-btn').addEventListener('click', function() {
-//     const taskText = document.getElementById('new-task').value;
-//     if (taskText === '') return; // Prevent adding empty tasks
+// Theme Toggle
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
 
-//     const taskList = document.getElementById('task-list');
-//     const listItem = document.createElement('li');
-//     listItem.textContent = taskText;
+themeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-theme');
+    themeToggle.textContent = body.classList.contains('dark-theme') ? '☀️' : '🌙';
+});
 
-//     const deleteBtn = document.createElement('button');
-//     deleteBtn.textContent = 'Delete';
-//     deleteBtn.classList.add('delete-btn');
-//     deleteBtn.addEventListener('click', function() {
-//         taskList.removeChild(listItem);
-//     });
+// Task Checking
+const todoList = document.getElementById('todo-list');
 
-//     listItem.appendChild(deleteBtn);
-//     taskList.appendChild(listItem);
+todoList.addEventListener('change', (event) => {
+    const checkbox = event.target;
+    const label = checkbox.nextElementSibling;
 
-//     document.getElementById('new-task').value = ''; // Clear the input
-// });
+    if (checkbox.checked) {
+        label.classList.add('completed');
+    } else {
+        label.classList.remove('completed');
+    }
+});
 
+// Add New Task (Dummy implementation)
+const addTaskButton = document.getElementById('add-task');
 
+addTaskButton.addEventListener('click', () => {
+    const newTask = document.createElement('li');
+    newTask.innerHTML = `
+        <input type="checkbox">
+        <label>New Task</label>
+    `;
+    todoList.appendChild(newTask);
+});
 
-function showPrompt(){
-    var modalDiv = document.getElementById('popup');
-    modalDiv.className = "modal";
-    modalDiv.removeAttribute("style")
-}
+// Search Filter
+const searchInput = document.getElementById('search');
+searchInput.addEventListener('input', () => {
+    const searchValue = searchInput.value.toLowerCase();
+    const tasks = todoList.getElementsByTagName('li');
 
+    Array.from(tasks).forEach(task => {
+        const label = task.querySelector('label').textContent.toLowerCase();
+        task.style.display = label.includes(searchValue) ? '' : 'none';
+    });
+});
 
-document.getElementById("add-btn").addEventListener('click' , function(){
-    var taskText = document.getElementById("task-input-text").value;
-    if (taskText === "") return; //prevent adding empty tasks
+// Filter Completed/Pending Tasks (Dummy implementation)
+const filterSelect = document.getElementById('filter');
+filterSelect.addEventListener('change', () => {
+    const filterValue = filterSelect.value;
+    const tasks = todoList.getElementsByTagName('li');
 
-    // Creating Checkbox button
-    var listItemCheckbox = document.createElement('button');
-    listItemCheckbox.classList.add('check-box');
-
-    // Create text Element 'p' and adding text
-    var text = document.createElement('p');
-    text.textContent = taskText.value;
-
-    //Get ul list id and create list items
-    var taskList = document.getElementById("task-list");
-    var listItem = document.createElement('li');
-
-    //Adding checkbox and text in list item
-    // listItem.textContent = listItemCheckbox;
-    listItem.textContent = text;
-  
-    //Adding list item li into the task list
-    taskList.appendChild(listItemCheckbox);
-    taskList.appendChild(listItem);
-    console.log(taskList);
-    
-
-    // taskList.innerHTML = listItem.innerHTML;
-    // console.log(listItem);
-    
-    listItemCheckbox.addEventListener('click', function(){
-        taskList.ariaChecked(listItem);
-    })
-
-
-    listItem.appendChild(listItemCheckbox);
-    taskList.appendChild(listItem);
-
-
-    document.getElementById('task-input-text').value = ''; // Clear the input
-
-    var modalDiv = document.getElementById('popup');
-    modalDiv.style.display = "none"
-
-})
+    Array.from(tasks).forEach(task => {
+        const checkbox = task.querySelector('input[type="checkbox"]');
+        if (filterValue === 'completed' && !checkbox.checked) {
+            task.style.display = 'none';
+        } else if (filterValue === 'pending' && checkbox.checked) {
+            task.style.display = 'none';
+        } else {
+            task.style.display = '';
+        }
+    });
+});

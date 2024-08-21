@@ -7,60 +7,37 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <!-- <h1>Todo List</h1>
-        <div class="input-section">
-            <input type="text" id="new-task" placeholder="Add a new task...">
-            <button id="add-task-btn">Add</button>
+    <div class="todo-container">
+        <h1>TODO LIST</h1>
+        <div class="controls">
+            <input type="search" id="search" placeholder="Search note...">
+            <select id="filter">
+                <option value="all">ALL</option>
+                <option value="completed">Completed</option>
+                <option value="pending">Pending</option>
+            </select>
+            <button id="theme-toggle">🌙</button>
         </div>
-        <ul id="task-list"></ul> -->
-        <div class="header">
-            <div class="heading">
-                <h1>TODO LIST</h1>
-            </div>
-            <div class="input">
-                <input type="search" id="search-inp" placeholder="Search your task...">
-                <button class="search-btn">Search</button>
-                 <button class="filter"></button>
-            </div>
-        </div>
-        <div class="main">
-            <ul id="task-list"></ul>
-        </div>
-        <div class="footer">
-            <button class="popup-task" onclick="showPrompt()">+</button>
-        </div>
-        <!---------------------------------------------------------------------------------------------------------------->
-        <!-- <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Modal 1</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  Show a second modal and hide this one with the button below.
-                </div>
-                <div class="modal-footer">
-                  <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button>
-                </div>
-              </div>
-            </div>
-          </div> -->
+        <ul id="todo-list">
+            <li>
+                <input type="checkbox" id="task-1" checked>
+                <label for="task-1" class="completed">Read recommended book again</label>
+            </li>
+            <li>
+                <input type="checkbox" id="task-2">
+                <label for="task-2">Vacation planning</label>
+            </li>
+            <li>
+                <input type="checkbox" id="task-3">
+                <label for="task-3">Cook dinner</label>
+            </li>
+            <li>
+                <input type="checkbox" id="task-4">
+                <label for="task-4">Sign up for training</label>
+            </li>
+        </ul>
+        <button id="add-task" class="fab">+</button>
     </div>
-
-    
-
- <div id="popup" style="display: none;">
-    <div class="modal-popup-center">
-      <h1>Add Task</h1>
-      <div class="task-input">
-        <input type="text" id="task-input-text" placeholder="Add Task...">
-      <button class="add" id="add-btn">Add</button>
-      </div>
-    </div>
- </div>
-
     <script src="script.js"></script>
 </body>
 </html>
