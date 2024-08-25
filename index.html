@@ -16,7 +16,7 @@
                 <option value="completed">Completed</option>
                 <option value="pending">Pending</option>
             </select>
-            <button id="theme-toggle">🌙</button>
+            <button id="theme-toggle" onclick="changeTheme()">🌙</button>
         </div>
         <ul id="todo-list">
             <li>
@@ -36,8 +36,9 @@
                 <label for="task-4">Sign up for training</label>
             </li>
         </ul>
-        <button id="add-task" class="fab">+</button>
+        <button id="add-task" onclick="addTask()" class="fab">+</button>
     </div>
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
